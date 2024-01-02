@@ -1621,9 +1621,11 @@ if exists( '*popup_atcursor' )
       return
     endif
 
-    call youcompleteme#GetCommandResponseAsync(
+	if popup_getpos( s:cursorhold_popup )->empty()
+      call youcompleteme#GetCommandResponseAsync(
           \ function( 's:ShowHoverResult' ),
           \ b:ycm_hover.command )
+	endif
   endfunction
 
 
